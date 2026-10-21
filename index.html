@@ -391,35 +391,35 @@
 
         <section id="generator" class="bg-blue-900 text-white p-6 sm:p-10 rounded-3xl space-y-6 shadow-xl">
             <div class="text-center space-y-2 max-w-2xl mx-auto">
-                <span class="text-xs font-bold uppercase tracking-widest text-blue-300">Cercador interactiu</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Quina llicència s'adapta al teu projecte?</h2>
-                <p class="text-blue-100 text-sm">Respon aquestes dues preguntes per identificar la llicència indicada per al teu treball.</p>
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-300">Asistent de Llicències</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Quina llicència necessites per al teu treball?</h2>
+                <p class="text-blue-100 text-sm">Respon aquestes preguntes senzilles per saber quina llicència Creative Commons has d'utilitzar.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto pt-2">
                 <!-- Question 1 -->
                 <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl space-y-2 border border-white/10">
-                    <label class="block font-semibold text-sm text-blue-50">1. Permets l'ús comercial de la teva obra?</label>
+                    <label class="block font-semibold text-sm text-blue-50">1. Altres persones poden fer diners amb la teva obra?</label>
                     <select id="qCom" onchange="updateLicenseResult()" class="w-full bg-white text-slate-800 rounded-xl p-3 text-sm font-medium outline-none focus:ring-2 focus:ring-blue-300">
-                        <option value="yes">Sí (Ús comercial permès)</option>
-                        <option value="no">No (Ús no comercial - NC)</option>
+                        <option value="yes">Sí, es permet l'ús comercial</option>
+                        <option value="no">No, només per a ús gratuït (NC)</option>
                     </select>
                 </div>
 
                 <!-- Question 2 -->
                 <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl space-y-2 border border-white/10">
-                    <label class="block font-semibold text-sm text-blue-50">2. Permets la creació d'obres derivades?</label>
+                    <label class="block font-semibold text-sm text-blue-50">2. Permets que la gent editi o modifiqui la teva obra?</label>
                     <select id="qMod" onchange="updateLicenseResult()" class="w-full bg-white text-slate-800 rounded-xl p-3 text-sm font-medium outline-none focus:ring-2 focus:ring-blue-300">
-                        <option value="yes">Sí, lliurement</option>
-                        <option value="sa">Sí, si es comparteix igual (SA)</option>
-                        <option value="no">No permès (Sense modificacions - ND)</option>
+                        <option value="yes">Sí, poden modificar-la lliurement</option>
+                        <option value="sa">Sí, però la nova versió ha de tenir la mateixa llicència (SA)</option>
+                        <option value="no">No, no es pot canviar res de l'obra (ND)</option>
                     </select>
                 </div>
             </div>
 
             <!-- Result Display -->
             <div class="bg-white text-slate-800 p-6 rounded-2xl text-center max-w-xl mx-auto space-y-3 card-shadow">
-                <div class="text-xs uppercase tracking-wider text-slate-500 font-bold">Llicència recomanada:</div>
+                <div class="text-xs uppercase tracking-wider text-slate-500 font-bold">La teva llicència ideal és:</div>
                 <div class="flex items-center justify-center gap-2 text-2xl sm:text-3xl font-black text-blue-700">
                     <span id="resBadge">CC BY 4.0</span>
                 </div>
@@ -428,7 +428,7 @@
                     <i class="fa-brands fa-creative-commons-by"></i>
                 </div>
                 <p id="resDesc" class="text-xs text-slate-600 leading-relaxed max-w-md mx-auto font-normal">
-                    Qualsevol pot utilitzar, modificar i comercialitzar el treball, amb l'obligació de citar l'autoria original.
+                    Qualsevol pot utilitzar, modificar i comercialitzar el treball, amb l'única condició de citar-te com a autor/a original.
                 </p>
                 <button onclick="copyLicenseText()" class="mt-2 text-xs font-semibold px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition inline-flex items-center gap-2">
                     <i class="fa-regular fa-copy"></i> Copiar text d'atribució
@@ -437,10 +437,10 @@
         </section>
 
         <section class="grid md:grid-cols-2 gap-6">
-            <!-- Conceptes Erroneis -->
+            <!-- Malentesos Freqüents -->
             <div class="bg-white p-6 rounded-2xl border border-slate-200 card-shadow space-y-4">
                 <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Malentenduts freqüents
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500"></i> Malentesos freqüents
                 </h3>
                 
                 <div class="space-y-3 text-xs">
@@ -514,32 +514,32 @@
             const mod = document.getElementById('qMod').value;
 
             let badge = "CC BY 4.0";
-            let desc = "Qualsevol pot utilitzar, modificar i comercialitzar el treball, amb l'obligació de citar l'autoria original.";
+            let desc = "Qualsevol pot utilitzar, modificar i comercialitzar el treball, amb l'única condició de citar-te com a autor/a original.";
             let iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i>';
 
             if (com === 'yes' && mod === 'yes') {
                 badge = "CC BY 4.0";
-                desc = "Qualsevol pot utilitzar, modificar i comercialitzar el treball, amb l'obligació de citar l'autoria original.";
+                desc = "Qualsevol pot utilitzar, modificar i comercialitzar el treball, amb l'única condició de citar-te com a autor/a original.";
                 iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i>';
             } else if (com === 'yes' && mod === 'sa') {
                 badge = "CC BY-SA 4.0";
-                desc = "Es permet l'ús comercial i la modificació, però les obres derivades s'han de llicenciar sota els mateixos termes.";
+                desc = "Es permet l'ús comercial i la modificació, però qui faci una nova versió l'ha de compartir sota aquesta mateixa llicència.";
                 iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i><i class="fa-brands fa-creative-commons-sa"></i>';
             } else if (com === 'yes' && mod === 'no') {
                 badge = "CC BY-ND 4.0";
-                desc = "Es permet l'ús comercial i redistribució, però no la modificació ni alteració de l'obra original.";
+                desc = "Es permet reutilitzar i comercialitzar el teu treball, però l'obra s'ha de transmetre intacta i sense cap modificació.";
                 iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i><i class="fa-brands fa-creative-commons-nd"></i>';
             } else if (com === 'no' && mod === 'yes') {
                 badge = "CC BY-NC 4.0";
-                desc = "Es permet modificar i crear obres derivades, exclusivament per a fins no comercials.";
+                desc = "Es permet modificar i crear obres derivades, però ningú en podrà fer un ús comercial o guanyar diners.";
                 iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i><i class="fa-brands fa-creative-commons-nc"></i>';
             } else if (com === 'no' && mod === 'sa') {
                 badge = "CC BY-NC-SA 4.0";
-                desc = "Permet modificar sense finalitat comercial, distribuint les noves obres sota la mateixa llicència.";
+                desc = "Es permet adaptar l'obra sense fins comercials, sempre que les noves creacions es distribueixin amb la mateixa llicència.";
                 iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i><i class="fa-brands fa-creative-commons-nc"></i><i class="fa-brands fa-creative-commons-sa"></i>';
             } else if (com === 'no' && mod === 'no') {
                 badge = "CC BY-NC-ND 4.0";
-                desc = "Només permet descarregar i compartir l'obra original sense realitzar-ne canvis ni ús comercial.";
+                desc = "És la més restrictiva. Només es pot descarregar i compartir l'obra original sense fer canvis ni guanyar diners.";
                 iconsHtml = '<i class="fa-brands fa-creative-commons"></i><i class="fa-brands fa-creative-commons-by"></i><i class="fa-brands fa-creative-commons-nc"></i><i class="fa-brands fa-creative-commons-nd"></i>';
             }
 
